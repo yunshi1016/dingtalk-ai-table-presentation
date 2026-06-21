@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
+const assetUrl = (filename) => `${import.meta.env.BASE_URL}assets/${filename}`;
+
 const ASSETS = {
-  dingtalk: "/assets/dingtalk-brand.png",
-  tableLogo: "/assets/ai-table-logo.png",
-  capabilities: "/assets/ai-capabilities.png",
-  automation: "/assets/automation.png",
-  dashboard: "/assets/dashboard.png",
+  dingtalk: assetUrl("dingtalk-brand.png"),
+  tableLogo: assetUrl("ai-table-logo.png"),
+  capabilities: assetUrl("ai-capabilities.png"),
+  automation: assetUrl("automation.png"),
+  dashboard: assetUrl("dashboard.png"),
 };
 
 function BrandHeader({ label = "业务场景共创计划", inverse = false }) {
@@ -582,6 +584,15 @@ function App() {
         <button type="button" onClick={() => setOverviewOpen(true)}>目录</button>
         <span aria-live="polite">{index + 1} / {slides.length}</span>
         <button type="button" onClick={() => setNotesOpen((value) => !value)}>备注</button>
+        <a
+          className="docs-link"
+          href="https://docs.dingtalk.com/i/nodes/dQPGYqjpJYgLwLaQtBw25yw0Wakx1Z5N"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="在新窗口打开详细文档"
+        >
+          详细文档
+        </a>
         <button type="button" onClick={toggleFullscreen}>全屏</button>
         <button type="button" onClick={next} disabled={index === slides.length - 1}>下一页</button>
       </nav>

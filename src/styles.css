@@ -178,7 +178,10 @@ h2 {
   backdrop-filter: blur(14px);
 }
 
-.deck-controls button {
+.deck-controls button,
+.deck-controls a {
+  display: grid;
+  place-items: center;
   min-height: 34px;
   padding: 0 14px;
   border: 0;
@@ -186,15 +189,18 @@ h2 {
   color: #35415a;
   background: transparent;
   cursor: pointer;
+  text-decoration: none;
   transition: color 180ms ease, background 180ms ease, transform 120ms ease;
 }
 
-.deck-controls button:hover:not(:disabled) {
+.deck-controls button:hover:not(:disabled),
+.deck-controls a:hover {
   color: var(--accent-deep);
   background: #e8f0ff;
 }
 
-.deck-controls button:active:not(:disabled) {
+.deck-controls button:active:not(:disabled),
+.deck-controls a:active {
   transform: translateY(1px) scale(0.98);
 }
 
@@ -209,6 +215,17 @@ h2 {
   font-size: 13px;
   font-weight: 700;
   text-align: center;
+}
+
+.deck-controls .docs-link,
+.deck-controls .docs-link:visited {
+  color: var(--accent-deep);
+  background: #e8f0ff;
+}
+
+.deck-controls .docs-link:hover {
+  color: #f7faff;
+  background: var(--accent);
 }
 
 .notes-panel {
@@ -1486,7 +1503,8 @@ h2 {
     transform: none;
   }
 
-  .deck-controls button {
+  .deck-controls button,
+  .deck-controls a {
     padding: 0 8px;
     font-size: 12px;
   }
