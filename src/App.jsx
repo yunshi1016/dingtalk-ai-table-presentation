@@ -6,8 +6,9 @@ const ASSETS = {
   dingtalk: assetUrl("dingtalk-brand.png"),
   tableLogo: assetUrl("ai-table-logo.png"),
   capabilities: assetUrl("ai-capabilities.png"),
-  automation: assetUrl("automation.png"),
   dashboard: assetUrl("dashboard.png"),
+  clientAwards: assetUrl("client-awards.jpg"),
+  clientPresentation: assetUrl("client-presentation.jpg"),
 };
 
 function BrandHeader({ label = "业务场景共创计划", inverse = false }) {
@@ -209,19 +210,18 @@ const slides = [
     ),
   },
   {
-    title: "把能力放到业务一线",
-    duration: "1 分 30 秒",
+    title: "从学会搭建到跑通业务",
+    duration: "2 分钟",
     notes:
-      "第一层价值，是让业务骨干形成自主解决轻量数字化问题的能力。课程从业务问题、数据结构和流程开始，不从产品菜单开始。结果用场景说明和真实原型检验。",
+      "这里把原来的两层价值合在一起。课程从业务问题、数据结构和流程开始，目标是让业务骨干交付一个能被真实用户试用、可以按业务指标验收的轻量应用。首期优先选择高频、范围清楚、数据可得的场景。",
     content: (
-      <Slide className="slide-value-one">
-        <BrandHeader label="第一层价值" />
-        <div className="value-one-grid">
-          <div className="value-one-copy">
-            <p className="kicker">人才能力</p>
-            <h2>把解决问题的能力，<br />放到业务一线</h2>
-            <blockquote>懂业务的人，应该能更快验证自己的管理想法。</blockquote>
-          </div>
+      <Slide className="slide-value-bridge">
+        <BrandHeader label="从学习到业务" />
+        <div className="value-bridge-heading">
+          <p className="kicker">两个结果，一条路径</p>
+          <h2>骨干学会搭建，<br />成果进入真实业务</h2>
+        </div>
+        <div className="value-bridge-grid">
           <div className="method-stack">
             <div className="method-step method-step-wide">
               <span>先看业务</span>
@@ -232,50 +232,24 @@ const slides = [
               <strong>角色、流程、数据</strong>
             </div>
             <div className="method-step">
-              <span>最后搭应用</span>
-              <strong>原型、试用、验证</strong>
+              <span>最后验证</span>
+              <strong>原型、试用、指标</strong>
             </div>
           </div>
-        </div>
-        <div className="proof-strip">
-          <span>验收不只看考试</span>
-          <b>场景说明</b>
-          <b>应用原型</b>
-          <b>问题解释</b>
-        </div>
-      </Slide>
-    ),
-  },
-  {
-    title: "让成果进入真实业务",
-    duration: "1 分 30 秒",
-    notes:
-      "第二层价值，是让培训成果进入真实业务。每个入选场景都要有业务负责人、搭建负责人和明确验收方式。首期优先选择高频、范围清楚、数据可得的轻量场景。",
-    content: (
-      <Slide className="slide-value-two">
-        <BrandHeader label="第二层价值" />
-        <div className="value-two-layout">
-          <Visual
-            className="automation-visual"
-            src={ASSETS.automation}
-            alt="钉钉 AI 表格自动化流程配置界面"
-          />
-          <div className="value-two-copy">
-            <p className="kicker">真实场景</p>
-            <h2>不做虚拟演示，<br />只验证真实业务</h2>
-            <div className="acceptance-list">
-              {[
-                "真实问题与业务负责人",
-                "真实用户与代表性数据",
-                "能够跑通的核心流程",
-                "明确的指标与验收方式",
-              ].map((item, i) => (
-                <div key={item}><span>{i + 1}</span><b>{item}</b></div>
-              ))}
-            </div>
+          <div className="business-proof">
+            <span className="business-proof-label">进入业务的门槛</span>
+            <strong>真实问题与负责人</strong>
+            <strong>真实用户与代表性数据</strong>
+            <strong>能够跑通的核心流程</strong>
+            <strong>明确的指标与验收方式</strong>
           </div>
         </div>
-        <p className="pilot-note">首期用范围可控的场景验证价值，再决定是否扩大投入。</p>
+        <div className="bridge-result">
+          <span>验收逻辑</span>
+          <b>能讲清问题</b>
+          <i aria-hidden="true">再</i>
+          <b>能跑通应用</b>
+        </div>
       </Slide>
     ),
   },
@@ -344,6 +318,50 @@ const slides = [
           <i aria-hidden="true">复制</i>
           <div><span>结果</span><b>同类场景复用</b></div>
         </div>
+      </Slide>
+    ),
+  },
+  {
+    title: "案例：从挑战赛走向业务共创",
+    duration: "2 分钟",
+    notes:
+      "这是某佛山头部瓷砖企业的真实实践。企业以多维表挑战赛为载体，让业务团队用真实场景参赛，再通过评审和颁奖筛选可复用成果。其中预算编制场景用实时协同、数据互联、自动触达和权限管理替代文件拆合与人工催办。页面数据来自客户现场汇报材料，用于说明该案例的实践结果，不作为其他企业的固定收益承诺。",
+    content: (
+      <Slide className="slide-case">
+        <BrandHeader label="客户实践" />
+        <div className="case-heading">
+          <div>
+            <p className="kicker">某佛山头部瓷砖企业</p>
+            <h2>从挑战赛，走向业务共创</h2>
+          </div>
+          <p>真实场景参赛，业务结果验收，优秀方案继续复用。</p>
+        </div>
+        <div className="case-layout">
+          <div className="case-gallery">
+            <Visual
+              src={ASSETS.clientAwards}
+              alt="某佛山头部瓷砖企业多维表挑战赛颁奖现场"
+            />
+            <Visual
+              src={ASSETS.clientPresentation}
+              alt="某佛山头部瓷砖企业多维表挑战赛成果汇报现场"
+            />
+          </div>
+          <div className="case-evidence">
+            <div className="case-metrics">
+              <div><strong>约 2 周</strong><span>预算编制周期节省</span></div>
+              <div><strong>1 人 / 事业部</strong><span>人力投入节省</span></div>
+              <div><strong>约 5000 次</strong><span>公式复核与修改量简化</span></div>
+            </div>
+            <div className="case-mechanisms">
+              <span>价值机制</span>
+              <b>实时协同，减少文件拆合</b>
+              <b>数据互联，减少复杂公式依赖</b>
+              <b>自动触达与权限管理，降低沟通成本</b>
+            </div>
+          </div>
+        </div>
+        <p className="case-source">数据来源：客户现场汇报材料，仅用于说明本案例结果，不作为其他企业的收益承诺。</p>
       </Slide>
     ),
   },

@@ -16,9 +16,12 @@ page.on("pageerror", (error) => consoleErrors.push(error.message));
 await mkdir("qa/screens", { recursive: true });
 await page.goto("http://127.0.0.1:5173", { waitUntil: "networkidle" });
 await page.locator(".deck-stage").waitFor({ state: "visible" });
+await page.keyboard.press("o");
+const totalSlides = await page.locator(".overview-grid button").count();
+await page.keyboard.press("Escape");
 
 const slides = [];
-for (let index = 0; index < 11; index += 1) {
+for (let index = 0; index < totalSlides; index += 1) {
   await page.waitForTimeout(500);
   const report = await page.evaluate(() => {
     const slide = document.querySelector(".slide");
@@ -51,7 +54,7 @@ for (let index = 0; index < 11; index += 1) {
     path: `qa/screens/slide-${String(index + 1).padStart(2, "0")}.png`,
     fullPage: true,
   });
-  if (index < 10) await page.keyboard.press("ArrowRight");
+  if (index < totalSlides - 1) await page.keyboard.press("ArrowRight");
 }
 
 await page.keyboard.press("n");
@@ -75,6 +78,14 @@ for (let index = 0; index < 4; index += 1) await page.keyboard.press("ArrowRight
 await page.waitForTimeout(350);
 await page.screenshot({ path: "qa/screens/mobile-product.png", fullPage: true });
 
+for (let index = 0; index < 3; index += 1) await page.keyboard.press("ArrowRight");
+await page.waitForTimeout(350);
+await page.screenshot({ path: "qa/screens/mobile-case.png", fullPage: true });
+const mobileCaseOverflow = await page.evaluate(() => ({
+  bodyWidth: document.body.scrollWidth,
+  viewportWidth: window.innerWidth,
+}));
+
 console.log(JSON.stringify({
   slides,
   consoleErrors,
@@ -82,6 +93,7 @@ console.log(JSON.stringify({
   overviewVisible,
   overviewItems,
   mobileCoverOverflow,
+  mobileCaseOverflow,
 }, null, 2));
 
 await browser.close();
